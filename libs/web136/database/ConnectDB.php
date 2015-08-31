@@ -2,14 +2,35 @@
     namespace web136\database;
 
 
+    /**
+     * Class ConnectDB
+     * @package web136\database
+     * @description обертка для создания экземпляра PDO
+     */
     class ConnectDB {
 
+        /**
+         * @var
+         * @description хранит экземпляр класса ConnectDb
+         */
         public static $instance;
 
+        /**
+         * @var
+         * @description массив, в котором хранятся параметры для соединения с базой
+         */
         protected $arConfigs;
 
+        /**
+         * @var \PDO
+         * @description экземпляр \PDO
+         */
         protected $PDO_instance;
 
+        /**
+         * @return ConnectDB
+         * @description создает и возвращает экземпляр класса ConnectDb
+         */
         public static function getInstance(){
             if(!self::$instance){
                 self::$instance = new ConnectDB();
@@ -17,6 +38,9 @@
             return self::$instance;
         }
 
+        /**
+         * @description создает экземпляр \PDO
+         */
         private function __construct(){
 
             try{
@@ -41,14 +65,27 @@
 
         }
 
+        /**
+         * @return \PDO
+         * @description возвращает экземпляр \PDO
+         */
         public function getPDO_instance(){
             return $this->PDO_instance;
         }
 
+        /**
+         * @description заглушка для чистого и незамутненного Singleton
+         */
         private function __clone(){
 
         }
 
+        /**
+         * @throws \Exception
+         * @description подключает файл конфигурации базы данных
+         * Выкидывает исключения если файл конфигурации не существует, не доступен для чтения или если массив
+         * параметров пуст
+         */
         protected function getDbConfig(){
             if(!file_exists($_SERVER['DOCUMENT_ROOT'].'/config/database.php')){
                 throw new \Exception('Не существует файла конфигурации');
