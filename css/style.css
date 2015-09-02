@@ -1,0 +1,125 @@
+/*Обнуление стилей*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+}
+
+/* устанавливаем фокус */
+:focus {
+    outline: 0;
+}
+
+/* устанавливаем 'cellspacing="0"' для таблиц*/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*{
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+
+
+
+/*Стили страницы*/
+.content-wrapper{
+    width:100%;
+    max-width: 960px;
+    padding:3em 0;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.section{
+    margin-bottom: 4em;
+}
+
+h2{
+    margin-bottom: 1.5em;
+}
+
+.description{
+    margin-bottom: 1em;
+}
+
+.result{
+    padding: 2em 1em;
+}
+
+.button{
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0.5em;
+    border: none;
+    outline: none;
+}
+
+.green-button{
+    background-color: #B5D354;
+    border-bottom: 3px solid #79974f;
+}
+
+.orange-button{
+    background-color: #d3be31;
+    border-bottom: 3px solid #a37914;
+
+}
+
+thead {
+    text-align: center;
+}
+
+thead tr{
+    background-color: #92F996;
+}
+
+tbody tr:nth-of-type(2n){
+    background-color: #E4FFFC;
+}
+
+td, th{
+    padding: 0.5em;
+}
+
+td{
+    border: 1px solid #222222;
+}
+
+th{
+    border: 2px solid black;
+}
+
+table{
+    width: 90%;
+    margin:0 auto;
+}
