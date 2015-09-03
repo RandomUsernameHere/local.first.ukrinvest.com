@@ -72,10 +72,27 @@
                 throw new \Exception("Путь не является директорией");
             }
 
-            $tempArray = scandir($this->directory);
+            //Значение вынесено в переменную, а не сразу в цикл потому что мне нужна
+            //проверка на успешное выполнение
+            $tempResult = scandir($this->directory);
 
-            if($tempArray === FALSE){
+            if($tempResult === FALSE){
                 throw new \Exception('Ошибка при сканировании директории');
+            }
+
+            $tempArray = array();
+
+            foreach($tempResult as $item){
+
+                if($item == '.'||$item == '..'){
+                    continue;
+                }
+
+                $tempArray[] = array(
+                    'NAME' => $item,
+                    'IS_DIR' => is_dir($this->directory.DIRECTORY_SEPARATOR.$item)
+                );
+
             }
 
             $this->allFilesList = $tempArray;
@@ -90,8 +107,8 @@
             $tmpArray = array();
 
             foreach($this->allFilesList as $item){
-                if(!is_dir($this->directory.DIRECTORY_SEPARATOR.$item)&&
-                    preg_match($this->regEx, $item)){
+                if(!$item['IS_DIR']&&
+                    preg_match($this->regEx, $item['NAME'])){
                     $tmpArray[] = $item;
                 }
             }

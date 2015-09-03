@@ -1,3 +1,4 @@
+<?php /**@var $Result*/ ?>
 <?php if(is_array($Result)&&!empty($Result)):?>
     <table>
         <thead>

@@ -25,17 +25,17 @@
                     <h2>Задание №2</h2>
                 </div>
                 <div class="controls">
-                    <button name="getAll" class="button green-button">Все файлы</button>
-                    <button name="getFiltered" class="button green-button">Отфильтровать файлы</button>
-                    <button name="clearResult" class="button orange-button">Очистить результат</button>
+                    <button name="getAll" class="button green-button need_result">Все файлы</button>
+                    <button name="getFiltered" class="button green-button need_result">Отфильтровать файлы</button>
+                    <button name="clearResult" class="button orange-button clearing">Очистить результат</button>
                 </div>
-                <div class="result"></div>
+                <div class="result">
+                    <div class="half left" data-result="getAll"></div>
+                    <div class="half right" data-result="getFiltered"></div>
+                    <div class="clear"></div>
+                </div>
             </div>
         </div>
-
-        <pre>
-            <?php print_r(scandir($_SERVER['DOCUMENT_ROOT'].'/files'))?>
-        </pre>
 
     </body>
 </html>

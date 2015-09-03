@@ -8,7 +8,8 @@ $(document).ready(function(){
 
     //Кешируем кнопки
     cachedElements.dataBaseButtons = cachedElements.dataBaseGroup.find('button');
-    cachedElements.filesButtons = cachedElements.filesGroup.find('button');
+    cachedElements.filesButtons = cachedElements.filesGroup.find('button.need_result');
+    cachedElements.filesClearButton = cachedElements.filesGroup.find('button.clearing');
 
     //Элементы для записи результата
     cachedElements.dataBaseResult = cachedElements.dataBaseGroup.find('.result');
@@ -37,6 +38,30 @@ $(document).ready(function(){
         else{
             e.preventDefault();
         }
+    });
+
+    //Клик по кнопкам группы files
+    cachedElements.filesButtons.click(function(){
+        var Marker = $(this).attr('name');
+
+        $.ajax({
+            url: '/controller/files.php',
+            type: 'post',
+            data:{
+                'FILE_PARAM':Marker
+            },
+            success: function(data){
+                cachedElements.filesGroup.find('.result').find('.half[data-result="'+Marker+'"]').html(data);
+            },
+            error: function(){
+                cachedElements.filesGroup.find('.result').find('.half[data-result="'+Marker+'"]').html('Ошибка связи с сервером');
+            }
+        });
+    });
+
+    //Очищаем результат выборки файлов
+    cachedElements.filesClearButton.click(function(){
+        cachedElements.filesGroup.find('.half').empty();
     });
 
 });
